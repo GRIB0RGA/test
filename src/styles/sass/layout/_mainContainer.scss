@@ -1,0 +1,16 @@
+//! REFACTORED \\\
+
+.main {
+  max-width: $width-default;
+  margin: 0 auto;
+  position: relative;
+  //! Mixins \\\
+  @include respond(desktop) {
+    padding: 0 4rem;
+  }
+
+  &__products,
+  &__pages {
+    @include flexColumnGap(16rem);
+  }
+}

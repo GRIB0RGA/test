@@ -1,0 +1,15 @@
+#body {
+  position: relative;
+}
+
+$overlay-height: 100%;
+$header-height: 9.6rem;
+.overlay {
+  position: fixed;
+  top: 9.6rem;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 9.6rem);
+  background-color: rgba(255, 0, 0, 0.329);
+  z-index: 997;
+}

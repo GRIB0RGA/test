@@ -1,0 +1,67 @@
+//! REFACTORED \\\
+
+.home-banner {
+  width: 100%;
+
+  position: absolute;
+  overflow: hidden;
+
+  //! Mixins \\\
+  @include respond(desktop) {
+    padding: 0 4rem;
+    grid-template-columns: 1fr;
+  }
+
+  &::after {
+    content: "";
+    // background-color: red;
+    @include positionAbsoluteTopLeft(0, 0);
+    @include widthAndHeight(100%, 100%);
+    @include backgroundImageWithCustomGradient(
+      $color-secondary-2-see-through-2,
+      "/src/assets/home/desktop/hero-MAIN.jpeg"
+    );
+    background-position: 45rem 0rem;
+    background-repeat: no-repeat;
+    animation: headerAnimation 3s ease-out;
+    z-index: 1;
+
+    //! Mixins \\\
+    @include respond(desktop) {
+      @include backgroundImageWithCustomGradient(
+        $color-secondary-2-see-through-2,
+        "/src/assets/home/desktop/hero-MAIN.jpeg"
+      );
+      background-position: center;
+      ackground-size: contain;
+    }
+    @include respond(phone-rotated) {
+      background-size: contain;
+    }
+  }
+  &__title {
+    @include flexColumnGap(2.4rem);
+    animation: moveInRight 3s ease-out;
+    z-index: 3;
+    h1 {
+      max-width: 40rem;
+
+      //! Mixins \\\
+      @include respond(desktop) {
+        text-align: center;
+      }
+    }
+
+    //! Mixins \\\
+    @include respond(desktop) {
+      align-items: center;
+    }
+  }
+  &__text {
+    max-width: 35rem;
+    //! Mixins \\\
+    @include respond(desktop) {
+      text-align: center;
+    }
+  }
+}

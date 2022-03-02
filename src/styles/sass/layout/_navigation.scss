@@ -1,0 +1,124 @@
+//! REFACTORED \\\
+
+%navbarType {
+  width: 100%;
+  @include flexAlignCenter;
+}
+
+.navbar {
+  &__container {
+    @include positionAbsoluteTopLeft(0, 0);
+    width: 100%;
+    background-color: $color-secondary-2;
+    display: flex;
+    justify-content: center;
+    min-height: 9.6rem;
+    z-index: 999;
+  }
+  height: 9.6rem;
+  max-width: $width-default;
+  width: 100%;
+
+  @include flexAlignCenter;
+
+  z-index: 999;
+  //?######################  FOOTER ######################?\\
+  &__footer {
+    @extend %navbarType;
+    justify-content: space-between;
+
+    //! MIXINS \\\
+    @include respond(phone-rotated) {
+      flex-direction: column;
+      gap: 5.2rem;
+      & .navbar__list {
+        flex-direction: column;
+      }
+    }
+  }
+  //?######################  DESKTOP ######################?\\
+
+  &__desktop {
+    @extend %navbarType;
+    justify-content: space-between;
+
+    //! MIXINS \\\
+
+    @include respond(desktop) {
+      padding: 0 4rem;
+    }
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+
+  &__list {
+    @include flexAlignCenterWithGap(3.4rem);
+  }
+  &__link {
+    @include linksAndBtn;
+    transition: all 0.3s;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  &__icon {
+    cursor: pointer;
+  }
+  //?######################  Tablet ######################?\\
+
+  &__tablet {
+    @extend %navbarType;
+    display: none;
+    position: relative;
+    //! MIXINS \\\
+
+    @include respond(tablet) {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4rem;
+    }
+    @include respond(phone) {
+      display: none;
+    }
+  }
+  &__logo-plus-hamburger {
+    @include flexAlignCenterWithGap(4.2rem);
+  }
+  &__hamburger {
+    cursor: pointer;
+  }
+
+  //?######################  Mobile ######################?\\
+  &__mobile {
+    @extend %navbarType;
+    position: relative;
+    display: none;
+
+    //! MIXINS \\\
+    @include respond(phone) {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2.4rem;
+    }
+  }
+  //?######################  Menu ######################?\\
+  &__menu {
+    min-height: 35rem;
+    width: 100%;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 9.6rem;
+    left: 0;
+    z-index: 999;
+
+    @include respond(min-tablet) {
+      display: none;
+    }
+
+    transition: all 1s;
+  }
+}
